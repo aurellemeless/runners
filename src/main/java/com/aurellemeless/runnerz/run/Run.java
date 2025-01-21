@@ -9,7 +9,7 @@ public record Run(Integer id,
                   @NotEmpty
                   String title,
                   LocalDateTime startedOn,
-                  LocalDateTime completionOn,
+                  LocalDateTime completedOn,
                   @Positive
                   Integer miles,
                   Location location) {
