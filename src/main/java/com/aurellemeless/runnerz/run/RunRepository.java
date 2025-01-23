@@ -46,6 +46,14 @@ public class RunRepository {
         Assert.state(updated == 1, "Failed to create run "+ run.title());
     }
 
+    public int count(){
+       return jdbcClient.sql("SELECT id COUNT FROM Run").query().listOfRows().size();
+    }
+
+    public void saveAll(List<Run> runs){
+       runs.stream().forEach(this::create);
+    }
+
     public void update(Run run, Integer id){
         var updated = jdbcClient.sql("UPDATE Run set title=? , started_on=?, completed_on=?, miles=?, location=? WHERE id=?")
                 .params(List.of(
